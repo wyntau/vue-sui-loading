@@ -1,12 +1,14 @@
 <template>
-  <div class="vue-sui-preloader-overlay" v-if="shown">
-    <div class="vue-sui-preloader-modal">
-      <div class="vue-sui-preloader-modal-title">{{ title }}</div>
-      <div class="vue-sui-preloader-modal-text">
-        <div class="vue-sui-preloader"></div>
+  <transition>
+    <div class="vue-sui-preloader-overlay" v-if="shown">
+      <div class="vue-sui-preloader-modal">
+        <div class="vue-sui-preloader-modal-title">{{ title }}</div>
+        <div class="vue-sui-preloader-modal-text">
+          <div class="vue-sui-preloader"></div>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <style>
@@ -22,18 +24,53 @@
     right: 0;
     bottom: 0;
     z-index: 10600;
-    background: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
   }
+  .vue-sui-preloader-overlay.v-enter-active{
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: .4s;
+  }
+  .vue-sui-preloader-overlay.v-enter{
+    opacity: 0;
+  }
+  .vue-sui-preloader-overlay.v-leave-active{
+    opacity: 0;
+    transition: opacity .4s;
+  }
+
   .vue-sui-preloader-modal {
     width: 270px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 1;
     padding: 15px;
     background: #e8e8e8;
     border-radius: 7px;
   }
+  .vue-sui-preloader-overlay.v-enter-active .vue-sui-preloader-modal {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition-property: transform opacity;
+    transition-duration: .4s;
+  }
+
+  .vue-sui-preloader-overlay.v-enter .vue-sui-preloader-modal{
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.185);
+  }
+
+  .vue-sui-preloader-overlay.v-leave-active .vue-sui-preloader-modal {
+    transform: translate(-50%, -50%) scale(0.815);
+    opacity: 0;
+    transition-property: transform opacity;
+    transition-duration: .4s;
+  }
+
   .vue-sui-preloader-modal-title {
     font-weight: 500;
     font-size: 18px;
