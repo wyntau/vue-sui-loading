@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-sui-preloader-overlay">
+  <div class="vue-sui-preloader-overlay" v-if="shown">
     <div class="vue-sui-preloader-modal">
       <div class="vue-sui-preloader-modal-title">{{ title }}</div>
       <div class="vue-sui-preloader-modal-text">
