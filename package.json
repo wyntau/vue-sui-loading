@@ -1,6 +1,6 @@
 {
   "name": "vue-sui-loading",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue 2.x port of sui $.{showIndicator,hideIndicator,showPreloader,hidePreloader}",
   "main": "dist/vue-sui-loading.js",
   "scripts": {
